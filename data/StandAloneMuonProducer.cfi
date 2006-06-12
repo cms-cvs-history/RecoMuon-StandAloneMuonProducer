@@ -1,0 +1,39 @@
+module standAloneMuonProducer = StandAloneMuonProducer {
+	string MuonSeedCollectionLabel = "MuonSeedProducer"
+
+	PSet STATrajBuilderParameters = {
+		
+		double EtaMaxAllowed = 2.5
+
+		PSet RefitterParameters = {
+
+			string PropagationDirection = "alongMomentum"
+			double MaxChi2 = 25.0
+			double NumberOfSigma = 3.0 
+			
+			# when the updator will go in the ES this will des
+			PSet MuonTrajectoryUpdatorParameters = {
+				
+				double MaxChi2 = 25.0
+				int32 Granularity = 0
+							     }	
+	
+					  }
+
+		PSet BWFilterParameters = {
+		
+			string PropagationDirection = "oppositeToMomentum"
+			double MaxChi2 = 25.0
+			double NumberOfSigma = 3.0
+
+			# when the updator will go in the ES this will des
+			PSet MuonTrajectoryUpdatorParameters = {
+				
+			double MaxChi2 = 25.0
+			int32 Granularity = 2
+						   	     }	
+ 					}
+		
+		PSet SmootherParameters = {}
+				        }
+}
