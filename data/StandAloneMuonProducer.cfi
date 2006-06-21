@@ -8,13 +8,13 @@ module standAloneMuonProducer = StandAloneMuonProducer {
 		PSet RefitterParameters = {
 
 			string PropagationDirection = "alongMomentum"
-			double MaxChi2 = 25.0
+			double MaxChi2 = 10000 # 25.0
 			double NumberOfSigma = 3.0 
 			
 			# when the updator will go in the ES this will des
 			PSet MuonTrajectoryUpdatorParameters = {
 				
-				double MaxChi2 = 25.0
+				double MaxChi2 = 10000 # 25.0
 				int32 Granularity = 0
 							     }	
 	
@@ -23,13 +23,13 @@ module standAloneMuonProducer = StandAloneMuonProducer {
 		PSet BWFilterParameters = {
 		
 			string PropagationDirection = "oppositeToMomentum"
-			double MaxChi2 = 25.0
+			double MaxChi2 = 10000 # 25.0
 			double NumberOfSigma = 3.0
 
 			# when the updator will go in the ES this will des
 			PSet MuonTrajectoryUpdatorParameters = {
 				
-			double MaxChi2 = 25.0
+			double MaxChi2 = 10000 # 25.0
 			int32 Granularity = 2
 						   	     }	
  					}
