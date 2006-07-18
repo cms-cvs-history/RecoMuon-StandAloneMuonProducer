@@ -1,0 +1,63 @@
+include "TrackPropagation/SteppingHelixPropagator/data/SteppingHelixPropagatorAlong.cfi"
+include "TrackPropagation/SteppingHelixPropagator/data/SteppingHelixPropagatorOpposite.cfi"
+include "TrackPropagation/SteppingHelixPropagator/data/SteppingHelixPropagatorAny.cfi"
+
+
+#include "Recomuon/TrackingTools/data/MuonTrajectoryUpdator.cfi"
+
+module StandAloneMuon = StandAloneMuonProducer {
+	untracked string MuonSeedCollectionLabel = "MuonSeed"
+
+	PSet STATrajBuilderParameters = {
+		
+		untracked bool DoBackwardRefit = true
+
+		double EtaMaxAllowed = 2.5
+
+		PSet RefitterParameters = {
+
+			untracked bool EnableDTMeasurement = true
+			untracked bool EnableCSCMeasurement = true
+			untracked bool EnableRPCMeasurement = true
+
+			string PropagationDirection = "alongMomentum"
+#			string Propagator = "SteppingHelixPropagatorAlong"
+			string Propagator = "SteppingHelixPropagatorAny"
+			string NavigationType = "Standard"
+
+			double MaxChi2 = 1000 #25.0
+			double NumberOfSigma = 3.0 
+			
+			# when the updator will go in the ES this will des
+			PSet MuonTrajectoryUpdatorParameters = {
+				
+				double MaxChi2 = 1000 #25.0
+				int32 Granularity = 0
+							     }	
+					  }
+
+		PSet BWFilterParameters = {
+		
+			untracked bool EnableDTMeasurement = true
+			untracked bool EnableCSCMeasurement = true
+			untracked bool EnableRPCMeasurement = true
+
+			string PropagationDirection = "oppositeToMomentum"
+#			string Propagator = "SteppingHelixPropagatorOpposite"	
+			string Propagator = "SteppingHelixPropagatorAny"	
+			string NavigationType = "Standard"
+
+			double MaxChi2 = 25.0
+			double NumberOfSigma = 3.0
+
+			# when the updator will go in the ES this will des
+			PSet MuonTrajectoryUpdatorParameters = {
+				
+			double MaxChi2 = 25.0
+			int32 Granularity = 2
+						   	     }	
+ 					}
+		
+		PSet SmootherParameters = {}
+				        }
+}
