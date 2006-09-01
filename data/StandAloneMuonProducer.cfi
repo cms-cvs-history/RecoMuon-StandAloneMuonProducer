@@ -4,7 +4,7 @@ include "TrackPropagation/SteppingHelixPropagator/data/SteppingHelixPropagatorAn
 
 include "RecoMuon/TrackingTools/data/MuonServiceProxy.cff"
 
-module StandAloneMuon = StandAloneMuonProducer {
+module standAloneMuons = StandAloneMuonProducer {
     untracked string MuonSeedCollectionLabel = "MuonSeed"
     
     string TrackLoaderPropagatorName = "SteppingHelixPropagatorAny"
