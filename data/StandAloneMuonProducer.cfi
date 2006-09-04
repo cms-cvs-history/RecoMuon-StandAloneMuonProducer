@@ -23,8 +23,8 @@ module standAloneMuons = StandAloneMuonProducer {
 	    bool EnableCSCMeasurement = true
 	    bool EnableRPCMeasurement = true
 	    
-	    string PropagationDirection = "alongMomentum"
-	    #			string Propagator = "SteppingHelixPropagatorAlong"
+	    string FitDirection = "insideOut"
+	    # string Propagator = "SteppingHelixPropagatorAlong"
 	    string Propagator = "SteppingHelixPropagatorAny"
 	    string NavigationType = "Standard"
 	    
@@ -46,7 +46,7 @@ module standAloneMuons = StandAloneMuonProducer {
 	    bool EnableRPCMeasurement = true
 	    
 	    string BWSeedType = "fromGenerator"
-	    string PropagationDirection = "oppositeToMomentum"
+	    string FitDirection = "outsideIn"
 	    #			string Propagator = "SteppingHelixPropagatorOpposite"	
 	    string Propagator = "SteppingHelixPropagatorAny"	
 	    string NavigationType = "Standard"
