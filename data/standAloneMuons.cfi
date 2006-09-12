@@ -1,11 +1,5 @@
-include "TrackPropagation/SteppingHelixPropagator/data/SteppingHelixPropagatorAlong.cfi"
-include "TrackPropagation/SteppingHelixPropagator/data/SteppingHelixPropagatorOpposite.cfi"
-include "TrackPropagation/SteppingHelixPropagator/data/SteppingHelixPropagatorAny.cfi"
-
-include "RecoMuon/TrackingTools/data/MuonServiceProxy.cff"
-
 module standAloneMuons = StandAloneMuonProducer {
-    untracked string MuonSeedCollectionLabel = "MuonSeed"
+    untracked string MuonSeedCollectionLabel = "standAloneMuonSeeds"
     
     string TrackLoaderPropagatorName = "SteppingHelixPropagatorAny"
     
@@ -14,6 +8,7 @@ module standAloneMuons = StandAloneMuonProducer {
     PSet STATrajBuilderParameters = {
 	
 	untracked bool DoBackwardRefit = true
+	untracked bool DoSmoothing = false
 	
 	double EtaMaxAllowed = 2.5
 	
@@ -47,7 +42,7 @@ module standAloneMuons = StandAloneMuonProducer {
 	    
 	    string BWSeedType = "fromGenerator"
 	    string FitDirection = "outsideIn"
-	    #			string Propagator = "SteppingHelixPropagatorOpposite"	
+	    # string Propagator = "SteppingHelixPropagatorOpposite"	
 	    string Propagator = "SteppingHelixPropagatorAny"	
 	    string NavigationType = "Standard"
 	    
@@ -62,6 +57,11 @@ module standAloneMuons = StandAloneMuonProducer {
 	    }	
 	}
 	
-	PSet SmootherParameters = {}
+	PSet SmootherParameters = {
+	    double MaxChi2 = 25.0
+	    double NumberOfSigma = 3.0
+	    double ErrorRescalingFactor = 10.0
+	    string Propagator = "SteppingHelixPropagatorAny"
+	}
     }
 }
