@@ -1,5 +1,6 @@
 module standAloneMuons = StandAloneMuonProducer {
-    untracked string MuonSeedCollectionLabel = "standAloneMuonSeeds"
+    #    InputTag InputObjects = standAloneMuonSeeds
+    InputTag InputObjects = MuonSeed
     
     string TrackLoaderPropagatorName = "SteppingHelixPropagatorAny"
     
@@ -7,8 +8,8 @@ module standAloneMuons = StandAloneMuonProducer {
 
     PSet STATrajBuilderParameters = {
 	
-	untracked bool DoBackwardRefit = true
-	untracked bool DoSmoothing = false
+	bool DoBackwardRefit = true
+	bool DoSmoothing = false
 	
 	double EtaMaxAllowed = 2.5
 	
