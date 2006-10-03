@@ -1,0 +1,22 @@
+# Seed generator
+include "RecoMuon/MuonSeedGenerator/data/CosmicMuonSeedProducer.cfi"
+
+# Standalone muon producer
+include "RecoMuon/StandAloneMuonProducer/data/standAloneMuons.cff"
+replace standAloneMuons.MuonSeedCollectionLabel = "CosmicMuonSeed"
+replace standAloneMuons.STATrajBuilderParameters.BWFilterParameters.NavigationType = "Direct"
+replace standAloneMuons.STATrajBuilderParameters.RefitterParameters.NavigationType = "Direct"
+
+# to run only over DT measurements uncomment these cards
+#replace CosmicMuonSeed.EnableCSCMeasurement = false
+#replace standAloneMuons.STATrajBuilderParameters.RefitterParameters.EnableRPCMeasurement = false
+#replace standAloneMuons.STATrajBuilderParameters.BWFilterParameters.EnableRPCMeasurement = false
+#replace standAloneMuons.STATrajBuilderParameters.RefitterParameters.EnableCSCMeasurement = false
+#replace standAloneMuons.STATrajBuilderParameters.BWFilterParameters.EnableCSCMeasurement = false
+
+# to run only over CSC Measurements uncomment these cards
+#replace CosmicMuonSeed.EnableDTMeasurement = false
+#replace standAloneMuons.STATrajBuilderParameters.RefitterParameters.EnableRPCMeasurement = false
+#replace standAloneMuons.STATrajBuilderParameters.BWFilterParameters.EnableRPCMeasurement = false
+#replace standAloneMuons.STATrajBuilderParameters.RefitterParameters.EnableDTMeasurement = false
+#replace standAloneMuons.STATrajBuilderParameters.BWFilterParameters.EnableDTMeasurement = false
