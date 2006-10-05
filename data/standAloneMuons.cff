@@ -1,7 +1,4 @@
-include "TrackPropagation/SteppingHelixPropagator/data/SteppingHelixPropagatorAlong.cfi"
-include "TrackPropagation/SteppingHelixPropagator/data/SteppingHelixPropagatorOpposite.cfi"
-include "TrackPropagation/SteppingHelixPropagator/data/SteppingHelixPropagatorAny.cfi"
-
+# The services
 include "RecoMuon/TrackingTools/data/MuonServiceProxy.cff"
 
 # Stand Alone Muons Producer
