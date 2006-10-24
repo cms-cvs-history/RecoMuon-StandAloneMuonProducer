@@ -1,14 +1,23 @@
 module standAloneMuons = StandAloneMuonProducer {
-    
+
+    using MuonServiceProxy
+
     InputTag InputObjects = MuonSeed
     
-    string TrackLoaderPropagatorName = "SteppingHelixPropagatorAny"
+    string TrackLoaderPropagator = "SteppingHelixPropagatorAny"
+
     untracked bool PutTrajectoryIntoEvent = false
     
     using MuonServiceProxy
     
     PSet STATrajBuilderParameters = {
-	
+
+	# where you want the seed (in,out)
+	string SeedPosition = "in"
+	# a precise propagation direction can be choosen accordingly with the 
+	# above seed position
+	string SeedPropagator = "SteppingHelixPropagatorAny"
+
 	string NavigationType = "Standard"
 	
 	bool DoBackwardRefit = true
@@ -59,7 +68,7 @@ module standAloneMuons = StandAloneMuonProducer {
 	    double MaxChi2 = 25.0
 	    double NumberOfSigma = 3.0
 	    double ErrorRescalingFactor = 10.0
-	    string Propagator = "SteppingHelixPropagatorAny"
+	    string Propagator = "SteppingHelixPropagatorAlong"
 	}
     }
 }
