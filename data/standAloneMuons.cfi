@@ -1,14 +1,13 @@
 module standAloneMuons = StandAloneMuonProducer {
-
-    using MuonServiceProxy
-
+    
     InputTag InputObjects = MuonSeed
     
-    string TrackLoaderPropagator = "SteppingHelixPropagatorAny"
-
-    untracked bool PutTrajectoryIntoEvent = false
-    
     using MuonServiceProxy
+    
+    PSet TrackLoaderParameters = {
+	string TrackLoaderPropagator = "SteppingHelixPropagatorAny"
+	untracked bool PutTrajectoryIntoEvent = false
+    }
     
     PSet STATrajBuilderParameters = {
 
@@ -68,6 +67,13 @@ module standAloneMuons = StandAloneMuonProducer {
 	    double MaxChi2 = 25.0
 	    double NumberOfSigma = 3.0
 	    double ErrorRescalingFactor = 10.0
+	    # Pay attention when you change the standard reconstruction directions
+	    # (i.e. seed = "in", FWfit = "insideOut" and BWfit = "outsideIn")
+	    # because if you revert it
+	    # (i.e. seed = "out", FWfit = "outsideIn" and BWfit = "insideOut")
+	    # you have to change the following propagator as well
+	    # (it must become "SteppingHelixPropagatorOpposite". By default is is NOT
+	    # in the MuonServiceProxy.cff, so you have to load it.)
 	    string Propagator = "SteppingHelixPropagatorAlong"
 	}
     }
