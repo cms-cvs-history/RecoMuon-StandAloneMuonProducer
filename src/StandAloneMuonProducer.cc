@@ -6,8 +6,8 @@
  *   starting from internal seeds (L2 muon track segments).
  *
  *
- *   $Date: 2006/10/24 08:06:30 $
- *   $Revision: 1.19 $
+ *   $Date: 2007/03/13 10:26:12 $
+ *   $Revision: 1.25 $
  *
  *   \author  R.Bellan - INFN TO
  */
@@ -16,7 +16,6 @@
 #include "FWCore/Framework/interface/Event.h"
 #include "FWCore/Framework/interface/EventSetup.h"
 #include "FWCore/ParameterSet/interface/ParameterSet.h"
-#include "FWCore/Framework/interface/Handle.h"
 #include "FWCore/MessageLogger/interface/MessageLogger.h"
 
 #include "RecoMuon/StandAloneMuonProducer/src/StandAloneMuonProducer.h"
@@ -30,8 +29,9 @@
 // Input and output collection
 
 #include "DataFormats/TrajectorySeed/interface/TrajectorySeedCollection.h"
-
+#include "DataFormats/Common/interface/Handle.h"
 #include "DataFormats/TrackReco/interface/Track.h"
+#include "DataFormats/TrackReco/interface/TrackToTrackMap.h"
 
 #include <string>
 
@@ -40,7 +40,7 @@ using namespace std;
 
 /// constructor with config
 StandAloneMuonProducer::StandAloneMuonProducer(const ParameterSet& parameterSet){
-  LogDebug("Muon|RecoMuon|StandAloneMuonProducer")<<"constructor called"<<endl;
+  LogTrace("Muon|RecoMuon|StandAloneMuonProducer")<<"constructor called"<<endl;
 
   // Parameter set for the Builder
   ParameterSet trajectoryBuilderParameters = parameterSet.getParameter<ParameterSet>("STATrajBuilderParameters");
@@ -60,16 +60,21 @@ StandAloneMuonProducer::StandAloneMuonProducer(const ParameterSet& parameterSet)
   // instantiate the concrete trajectory builder in the Track Finder
   theTrackFinder = new MuonTrackFinder(new StandAloneMuonTrajectoryBuilder(trajectoryBuilderParameters,theService),
 				       new MuonTrackLoader(trackLoaderParameters,theService));
+
+  setAlias(parameterSet.getParameter<std::string>("@module_label"));
   
-  produces<reco::TrackCollection>();
-  produces<TrackingRecHitCollection>();
-  produces<reco::TrackExtraCollection>();
-  produces<std::vector<Trajectory> >();
+  produces<reco::TrackCollection>().setBranchAlias(theAlias + "Tracks");
+  produces<reco::TrackCollection>("UpdatedAtVtx").setBranchAlias(theAlias + "UpdatedAtVtxTracks");
+  produces<TrackingRecHitCollection>().setBranchAlias(theAlias + "RecHits");
+  produces<reco::TrackExtraCollection>().setBranchAlias(theAlias + "TrackExtras");
+  produces<reco::TrackToTrackMap>().setBranchAlias(theAlias + "TrackToTrackMap");
+  
+  produces<std::vector<Trajectory> >().setBranchAlias(theAlias + "Trajectories");
 }
   
 /// destructor
 StandAloneMuonProducer::~StandAloneMuonProducer(){
-  LogDebug("Muon|RecoMuon|StandAloneMuonProducer")<<"StandAloneMuonProducer destructor called"<<endl;
+  LogTrace("Muon|RecoMuon|StandAloneMuonProducer")<<"StandAloneMuonProducer destructor called"<<endl;
   if (theService) delete theService;
   if (theTrackFinder) delete theTrackFinder;
 }
@@ -78,11 +83,11 @@ StandAloneMuonProducer::~StandAloneMuonProducer(){
 void StandAloneMuonProducer::produce(Event& event, const EventSetup& eventSetup){
   const std::string metname = "Muon|RecoMuon|StandAloneMuonProducer";
   
-  LogDebug(metname)<<endl<<endl<<endl;
-  LogDebug(metname)<<"Stand Alone Muon Reconstruction Started"<<endl;
+  LogTrace(metname)<<endl<<endl<<endl;
+  LogTrace(metname)<<"Stand Alone Muon Reconstruction Started"<<endl;
 
   // Take the seeds container
-  LogDebug(metname)<<"Taking the seeds: "<<theSeedCollectionLabel.label()<<endl;
+  LogTrace(metname)<<"Taking the seeds: "<<theSeedCollectionLabel.label()<<endl;
   Handle<TrajectorySeedCollection> seeds; 
   event.getByLabel(theSeedCollectionLabel,seeds);
 
@@ -90,10 +95,10 @@ void StandAloneMuonProducer::produce(Event& event, const EventSetup& eventSetup)
   theService->update(eventSetup);
 
   // Reconstruct 
-  LogDebug(metname)<<"Track Reconstruction"<<endl;
+  LogTrace(metname)<<"Track Reconstruction"<<endl;
   theTrackFinder->reconstruct(seeds,event);
  
-  LogDebug(metname)<<"Event loaded"
+  LogTrace(metname)<<"Event loaded"
 		   <<"================================"
 		   <<endl<<endl;
 }

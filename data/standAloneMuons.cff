@@ -11,6 +11,7 @@ include "RecoMuon/DetLayers/data/muonDetLayerGeometry.cfi"
 
 # The services
 include "RecoMuon/TrackingTools/data/MuonServiceProxy.cff"
+include "RecoMuon/TrackingTools/data/MuonTrackLoader.cff"
 
 # Stand Alone Muons Producer
 include "RecoMuon/StandAloneMuonProducer/data/standAloneMuons.cfi"
