@@ -4,10 +4,7 @@ module standAloneMuons = StandAloneMuonProducer {
     
     using MuonServiceProxy
     
-    PSet TrackLoaderParameters = {
-	string TrackLoaderPropagator = "SteppingHelixPropagatorAny"
-	untracked bool PutTrajectoryIntoEvent = false
-    }
+    using MuonTrackLoaderForSTA
     
     PSet STATrajBuilderParameters = {
 
@@ -39,6 +36,8 @@ module standAloneMuons = StandAloneMuonProducer {
 		
 		double MaxChi2 = 1000 #25.0
 		int32 Granularity = 0
+		bool RescaleError = true
+		double RescaleErrorFactor = 100.		
 	    }	
 	}
 	
@@ -60,6 +59,8 @@ module standAloneMuons = StandAloneMuonProducer {
 		
 		double MaxChi2 = 25.0
 		int32 Granularity = 2
+		bool RescaleError = true
+		double RescaleErrorFactor = 100. 
 	    }	
 	}
 	
