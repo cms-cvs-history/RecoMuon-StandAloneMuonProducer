@@ -4,11 +4,7 @@ module standAloneMuons = StandAloneMuonProducer {
     
     using MuonServiceProxy
     
-    PSet TrackLoaderParameters = {
-	string TrackLoaderPropagator = "SteppingHelixPropagatorOpposite"
-	bool VertexConstraint = true
-	untracked bool PutTrajectoryIntoEvent = true
-    }
+    using MuonTrackLoaderForSTA
     
     PSet STATrajBuilderParameters = {
 
