@@ -8,6 +8,6 @@
 <use name=root>
 
 <library file="STAMuonAnalyzer.cc" name=STAMuonAnalyzer>
-  <flags SEAL_PLUGIN_NAME="STAMuonAnalyzer"> 
+  <flags EDM_PLUGIN=1> 
 </library> 
 
