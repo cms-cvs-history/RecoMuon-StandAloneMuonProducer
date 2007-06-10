@@ -36,7 +36,7 @@ module standAloneMuons = StandAloneMuonProducer {
 		
 		double MaxChi2 = 1000 #25.0
 		int32 Granularity = 0
-		bool RescaleError = true
+		bool RescaleError = false
 		double RescaleErrorFactor = 100.		
 	    }	
 	}
@@ -59,7 +59,7 @@ module standAloneMuons = StandAloneMuonProducer {
 		
 		double MaxChi2 = 25.0
 		int32 Granularity = 2
-		bool RescaleError = true
+		bool RescaleError = false
 		double RescaleErrorFactor = 100. 
 	    }	
 	}
