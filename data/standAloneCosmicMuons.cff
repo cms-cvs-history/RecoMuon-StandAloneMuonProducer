@@ -1,18 +1,41 @@
+# valid for 13X
+
+# Geometries
+include "Geometry/CMSCommonData/data/cmsIdealGeometryXML.cfi" 
+# in 150 shall be changed into
+# include "Geometry/CMSCommonData/data/cmsIdealGeometryXML.cff"
+
+include "Geometry/CommonDetUnit/data/bareGlobalTrackingGeometry.cfi"
+include "Geometry/DTGeometry/data/dtGeometry.cfi"
+include "Geometry/CSCGeometry/data/cscGeometry.cfi"
+include "Geometry/RPCGeometry/data/rpcGeometry.cfi"
+include "RecoMuon/DetLayers/data/muonDetLayerGeometry.cfi"
+
+# Magnetic Field
+include "MagneticField/Engine/data/uniformMagneticField.cfi" 
+include "Geometry/CMSCommonData/data/cmsMagneticFieldXML.cfi"
+# The services
+include "RecoMuon/TrackingTools/data/MuonServiceProxy.cff"
+
+# in 150 shall be used this: 
+# include "RecoMuon/TrackingTools/data/MuonTrackLoader.cff"
+
 # Seed generator
 include "RecoMuon/MuonSeedGenerator/data/CosmicMuonSeedProducer.cfi"
 
 # Standalone muon producer
-include "RecoMuon/StandAloneMuonProducer/data/standAloneMuons.cff"
-replace standAloneMuons.MuonSeedCollectionLabel = "CosmicMuonSeed"
-replace standAloneMuons.STATrajBuilderParameters.BWFilterParameters.NavigationType = "Direct"
-replace standAloneMuons.STATrajBuilderParameters.RefitterParameters.NavigationType = "Direct"
+include "RecoMuon/StandAloneMuonProducer/data/standAloneMuons.cfi"
+replace standAloneMuons.InputObjects = CosmicMuonSeed
+replace standAloneMuons.STATrajBuilderParameters.NavigationType = "Direct"
+replace standAloneMuons.TrackLoaderParameters.VertexConstraint = false
 
 # to run only over DT measurements uncomment these cards
-#replace CosmicMuonSeed.EnableCSCMeasurement = false
-#replace standAloneMuons.STATrajBuilderParameters.RefitterParameters.EnableRPCMeasurement = false
-#replace standAloneMuons.STATrajBuilderParameters.BWFilterParameters.EnableRPCMeasurement = false
-#replace standAloneMuons.STATrajBuilderParameters.RefitterParameters.EnableCSCMeasurement = false
-#replace standAloneMuons.STATrajBuilderParameters.BWFilterParameters.EnableCSCMeasurement = false
+replace CosmicMuonSeed.EnableCSCMeasurement = false
+replace standAloneMuons.STATrajBuilderParameters.RefitterParameters.EnableRPCMeasurement = false
+replace standAloneMuons.STATrajBuilderParameters.BWFilterParameters.EnableRPCMeasurement = false
+replace standAloneMuons.STATrajBuilderParameters.RefitterParameters.EnableCSCMeasurement = false
+replace standAloneMuons.STATrajBuilderParameters.BWFilterParameters.EnableCSCMeasurement = false
+
 
 # to run only over CSC Measurements uncomment these cards
 #replace CosmicMuonSeed.EnableDTMeasurement = false
@@ -20,3 +43,7 @@ replace standAloneMuons.STATrajBuilderParameters.RefitterParameters.NavigationTy
 #replace standAloneMuons.STATrajBuilderParameters.BWFilterParameters.EnableRPCMeasurement = false
 #replace standAloneMuons.STATrajBuilderParameters.RefitterParameters.EnableDTMeasurement = false
 #replace standAloneMuons.STATrajBuilderParameters.BWFilterParameters.EnableDTMeasurement = false
+
+
+sequence standAloneCosmicMuons = {CosmicMuonSeed,standAloneMuons}
+#sequence standAloneCosmicMuons = {CosmicMuonSeed}
