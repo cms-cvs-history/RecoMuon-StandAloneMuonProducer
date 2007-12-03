@@ -12,7 +12,7 @@ include "Geometry/RPCGeometry/data/rpcGeometry.cfi"
 include "RecoMuon/DetLayers/data/muonDetLayerGeometry.cfi"
 
 # Magnetic Field
-include "MagneticField/Engine/data/uniformMagneticField.cfi" 
+#include "MagneticField/Engine/data/uniformMagneticField.cfi" 
 include "Geometry/CMSCommonData/data/cmsMagneticFieldXML.cfi"
 # The services
 include "RecoMuon/TrackingTools/data/MuonServiceProxy.cff"
