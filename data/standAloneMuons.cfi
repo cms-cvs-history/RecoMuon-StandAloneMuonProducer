@@ -21,6 +21,9 @@ module standAloneMuons = StandAloneMuonProducer {
 	
 	PSet RefitterParameters = {
 	    
+	    InputTag DTRecSegmentLabel = dt4DSegments
+	    InputTag CSCRecSegmentLabel = cscSegments
+	    InputTag RPCRecSegmentLabel = rpcRecHits
 	    bool EnableDTMeasurement = true
 	    bool EnableCSCMeasurement = true
 	    bool EnableRPCMeasurement = true
@@ -43,6 +46,9 @@ module standAloneMuons = StandAloneMuonProducer {
 	
 	PSet BWFilterParameters = {
 	    
+	    InputTag DTRecSegmentLabel = dt4DSegments
+	    InputTag CSCRecSegmentLabel = cscSegments
+	    InputTag RPCRecSegmentLabel = rpcRecHits
 	    bool EnableDTMeasurement = true
 	    bool EnableCSCMeasurement = true
 	    bool EnableRPCMeasurement = true
