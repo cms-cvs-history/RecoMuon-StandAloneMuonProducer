@@ -1,6 +1,3 @@
-# Magnetic Field
-include "MagneticField/Engine/data/volumeBasedMagneticField.cfi"
-
 # Geometries
 include "Geometry/CMSCommonData/data/cmsIdealGeometryXML.cff" 
 include "Geometry/CommonDetUnit/data/bareGlobalTrackingGeometry.cfi"
@@ -9,12 +6,7 @@ include "Geometry/CSCGeometry/data/cscGeometry.cfi"
 include "Geometry/RPCGeometry/data/rpcGeometry.cfi"
 include "RecoMuon/DetLayers/data/muonDetLayerGeometry.cfi"
 
-<<<<<<< standAloneCosmicMuons.cff
-# Magnetic Field
-include "MagneticField/Engine/data/uniformMagneticField.cfi" 
-=======
 
->>>>>>> 1.5
 # The services
 include "RecoMuon/TrackingTools/data/MuonServiceProxy.cff"
 include "RecoMuon/TrackingTools/data/MuonTrackLoader.cff"
