@@ -58,6 +58,7 @@ module standAloneMuons = StandAloneMuonProducer {
 	    bool EnableRPCMeasurement = true
 	    
 	    string BWSeedType = "fromGenerator"
+#	    string BWSeedType = "fromFWFit"
 	    string FitDirection = "outsideIn"
 	    
 	    string Propagator = "SteppingHelixPropagatorAny"	
