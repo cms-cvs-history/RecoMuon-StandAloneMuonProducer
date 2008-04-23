@@ -20,10 +20,10 @@ module standAloneMuons = StandAloneMuonProducer {
 
 	string NavigationType = "Standard"
 	
-	bool DoBackwardRefit = true
-	bool DoSmoothing = false
+	bool DoBackwardFilter = true
+	bool DoRefit = false
 	
-	PSet RefitterParameters = {
+	PSet FilterParameters = {
 	    
 	    InputTag DTRecSegmentLabel = dt4DSegments
 	    InputTag CSCRecSegmentLabel = cscSegments
@@ -74,10 +74,9 @@ module standAloneMuons = StandAloneMuonProducer {
 	    }	
 	}
 	
-	PSet SmootherParameters = {
-	    double MaxChi2 = 25.0
-	    double NumberOfSigma = 3.0
-	    double ErrorRescalingFactor = 10.0
+	PSet RefitterParameters = {
+	    
+
 	    # Pay attention when you change the standard reconstruction directions
 	    # (i.e. seed = "in", FWfit = "insideOut" and BWfit = "outsideIn")
 	    # because if you revert it
@@ -85,7 +84,6 @@ module standAloneMuons = StandAloneMuonProducer {
 	    # you have to change the following propagator as well
 	    # (it must become "SteppingHelixPropagatorOpposite". By default is is NOT
 	    # in the MuonServiceProxy.cff, so you have to load it.)
-	    string Propagator = "SteppingHelixPropagatorAlong"
 	}
     }
 }
