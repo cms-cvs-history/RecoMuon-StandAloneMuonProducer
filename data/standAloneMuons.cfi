@@ -75,8 +75,8 @@ module standAloneMuons = StandAloneMuonProducer {
 	}
 	
 	PSet RefitterParameters = {
-	    
-
+	    string FitterName = "KFFitterSmootherSTA"
+	    int32 Option = 1
 	    # Pay attention when you change the standard reconstruction directions
 	    # (i.e. seed = "in", FWfit = "insideOut" and BWfit = "outsideIn")
 	    # because if you revert it
