@@ -1,7 +1,6 @@
 import FWCore.ParameterSet.Config as cms
 
 # Magnetic Field
-from MagneticField.Engine.volumeBasedMagneticField_cfi import *
 # Geometries
 from Geometry.CMSCommonData.cmsIdealGeometryXML_cff import *
 from Geometry.CommonDetUnit.bareGlobalTrackingGeometry_cfi import *
@@ -30,4 +29,5 @@ KFTrajectorySmootherForSTA.Estimator = 'Chi2STA'
 KFFittingSmootheForSTA.ComponentName = 'KFFitterSmootherSTA'
 KFFittingSmootheForSTA.Fitter = 'KFFitterSTA'
 KFFittingSmootheForSTA.Smoother = 'KFSmootherSTA'
+
 
