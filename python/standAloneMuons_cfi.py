@@ -61,4 +61,3 @@ standAloneMuons = cms.EDProducer("StandAloneMuonProducer",
 )
 
 
-
