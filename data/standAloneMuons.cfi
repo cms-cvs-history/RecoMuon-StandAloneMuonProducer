@@ -21,7 +21,7 @@ module standAloneMuons = StandAloneMuonProducer {
 	string NavigationType = "Standard"
 	
 	bool DoBackwardFilter = true
-	bool DoRefit = true #false
+	bool DoRefit = false
 	
 	PSet FilterParameters = {
 	    
@@ -76,9 +76,7 @@ module standAloneMuons = StandAloneMuonProducer {
 	
 	PSet RefitterParameters = {
 	    string FitterName = "KFFitterSmootherSTA"
-	    uint32 NumberOfIterations = 3
-	    bool ForceAllIterations = false
-	    #int32 Option = 1
+	    int32 Option = 1
 	    # Pay attention when you change the standard reconstruction directions
 	    # (i.e. seed = "in", FWfit = "insideOut" and BWfit = "outsideIn")
 	    # because if you revert it
