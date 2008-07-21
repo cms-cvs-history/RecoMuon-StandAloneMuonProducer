@@ -3,9 +3,6 @@
 # Geometries
 include "Geometry/CMSCommonData/data/cmsIdealGeometryXML.cff" 
 include "Geometry/CommonDetUnit/data/bareGlobalTrackingGeometry.cfi"
-include "Geometry/DTGeometry/data/dtGeometry.cfi"
-include "Geometry/CSCGeometry/data/cscGeometry.cfi"
-include "Geometry/RPCGeometry/data/rpcGeometry.cfi"
 include "RecoMuon/DetLayers/data/muonDetLayerGeometry.cfi"
 
 
@@ -24,13 +21,11 @@ replace KFTrajectorySmootherForSTA.ComponentName = "KFSmootherSTA"
 replace KFTrajectorySmootherForSTA.Propagator = "SteppingHelixPropagatorOpposite"
 replace KFTrajectorySmootherForSTA.Estimator  = "Chi2STA"
 
-
 es_module KFFittingSmootheForSTA = KFFittingSmoother from "TrackingTools/TrackFitters/data/KFFittingSmootherESProducer.cfi"
 
 replace KFFittingSmootheForSTA.ComponentName = "KFFitterSmootherSTA"
 replace KFFittingSmootheForSTA.Fitter = "KFFitterSTA"
 replace KFFittingSmootheForSTA.Smoother = "KFSmootherSTA"
-
 
 
 # Stand Alone Muons Producer
