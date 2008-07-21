@@ -62,12 +62,12 @@ module standAloneMuons = StandAloneMuonProducer {
 	    
 	    string Propagator = "SteppingHelixPropagatorAny"	
 	    
-	    double MaxChi2 = 25.0
+	    double MaxChi2 = 100.0
 	    double NumberOfSigma = 3.0
 	    
 	    PSet MuonTrajectoryUpdatorParameters = {
 		
-		double MaxChi2 = 25.0
+		double MaxChi2 = 100.0
 		int32 Granularity = 2
 		bool RescaleError = false
 		double RescaleErrorFactor = 100. 
