@@ -1,7 +1,6 @@
 # Magnetic Field
 
 # Geometries
-include "Geometry/CMSCommonData/data/cmsIdealGeometryXML.cff" 
 include "Geometry/CommonDetUnit/data/bareGlobalTrackingGeometry.cfi"
 include "RecoMuon/DetLayers/data/muonDetLayerGeometry.cfi"
 
