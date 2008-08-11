@@ -96,6 +96,7 @@ module standAloneMuons = StandAloneMuonProducer {
 	    string MuonRecHitBuilder = "MuonRecHitBuilder"
 	    string Propagator = "SteppingHelixPropagatorAny"
 	    uint32 NMinRecHits = 2
+	    double RescaleError = 10.
 	}
     }
 }
