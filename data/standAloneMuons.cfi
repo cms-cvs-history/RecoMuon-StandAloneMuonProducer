@@ -91,7 +91,6 @@ module standAloneMuons = StandAloneMuonProducer {
 	}
 
 	PSet SeedTransformerParameters = {
-	    using MuonServiceProxy
 	    string Fitter = "KFFitterSmootherSTA"
 	    string MuonRecHitBuilder = "MuonRecHitBuilder"
 	    string Propagator = "SteppingHelixPropagatorAny"
