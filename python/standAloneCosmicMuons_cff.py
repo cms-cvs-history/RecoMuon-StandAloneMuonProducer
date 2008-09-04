@@ -2,7 +2,7 @@ import FWCore.ParameterSet.Config as cms
 
 # valid for 13X
 # Geometries
-from Geometry.CMSCommonData.cmsIdealGeometryXML_cfi import *
+#include "Geometry/CMSCommonData/data/cmsIdealGeometryXML.cfi" 
 # in 150 shall be changed into
 # include "Geometry/CMSCommonData/data/cmsIdealGeometryXML.cff"
 from Geometry.CommonDetUnit.bareGlobalTrackingGeometry_cfi import *
@@ -11,8 +11,8 @@ from Geometry.CSCGeometry.cscGeometry_cfi import *
 from Geometry.RPCGeometry.rpcGeometry_cfi import *
 from RecoMuon.DetLayers.muonDetLayerGeometry_cfi import *
 # Magnetic Field
-from MagneticField.Engine.uniformMagneticField_cfi import *
-from Geometry.CMSCommonData.cmsMagneticFieldXML_cfi import *
+#include "MagneticField/Engine/data/uniformMagneticField.cfi" 
+#include "Geometry/CMSCommonData/data/cmsMagneticFieldXML.cfi"
 # The services
 from RecoMuon.TrackingTools.MuonServiceProxy_cff import *
 # in 150 shall be used this: 
@@ -32,9 +32,10 @@ standAloneMuons.InputObjects = 'CosmicMuonSeed'
 standAloneMuons.STATrajBuilderParameters.NavigationType = 'Direct'
 standAloneMuons.TrackLoaderParameters.VertexConstraint = False
 # to run only over DT measurements uncomment these cards
-CosmicMuonSeed.EnableCSCMeasurement = False
-standAloneMuons.STATrajBuilderParameters.RefitterParameters.EnableRPCMeasurement = False
+##CosmicMuonSeed.EnableCSCMeasurement = False
+#replace standAloneMuons.STATrajBuilderParameters.RefitterParameters.EnableRPCMeasurement = false
 standAloneMuons.STATrajBuilderParameters.BWFilterParameters.EnableRPCMeasurement = False
-standAloneMuons.STATrajBuilderParameters.RefitterParameters.EnableCSCMeasurement = False
+#replace standAloneMuons.STATrajBuilderParameters.RefitterParameters.EnableCSCMeasurement = false
 standAloneMuons.STATrajBuilderParameters.BWFilterParameters.EnableCSCMeasurement = False
+
 
