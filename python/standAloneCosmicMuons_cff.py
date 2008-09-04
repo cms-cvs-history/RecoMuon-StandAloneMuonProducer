@@ -32,7 +32,7 @@ standAloneMuons.InputObjects = 'CosmicMuonSeed'
 standAloneMuons.STATrajBuilderParameters.NavigationType = 'Direct'
 standAloneMuons.TrackLoaderParameters.VertexConstraint = False
 # to run only over DT measurements uncomment these cards
-CosmicMuonSeed.EnableCSCMeasurement = False
+##CosmicMuonSeed.EnableCSCMeasurement = False
 #replace standAloneMuons.STATrajBuilderParameters.RefitterParameters.EnableRPCMeasurement = false
 standAloneMuons.STATrajBuilderParameters.BWFilterParameters.EnableRPCMeasurement = False
 #replace standAloneMuons.STATrajBuilderParameters.RefitterParameters.EnableCSCMeasurement = false
