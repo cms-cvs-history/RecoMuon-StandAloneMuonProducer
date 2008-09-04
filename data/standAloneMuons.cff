@@ -1,13 +1,34 @@
 # Magnetic Field
-include "MagneticField/Engine/data/volumeBasedMagneticField.cfi"
 
 # Geometries
 include "Geometry/CMSCommonData/data/cmsIdealGeometryXML.cff" 
 include "Geometry/CommonDetUnit/data/bareGlobalTrackingGeometry.cfi"
-include "Geometry/DTGeometry/data/dtGeometry.cfi"
-include "Geometry/CSCGeometry/data/cscGeometry.cfi"
-include "Geometry/RPCGeometry/data/rpcGeometry.cfi"
 include "RecoMuon/DetLayers/data/muonDetLayerGeometry.cfi"
+
+
+es_module EstimatorForSTA = Chi2MeasurementEstimator from "TrackingTools/KalmanUpdators/data/Chi2MeasurementEstimatorESProducer.cfi"
+replace EstimatorForSTA.ComponentName = "Chi2STA"
+replace EstimatorForSTA.MaxChi2 = 1000.
+
+es_module KFTrajectoryFitterForSTA = KFTrajectoryFitter from "TrackingTools/TrackFitters/data/KFTrajectoryFitterESProducer.cfi"
+replace KFTrajectoryFitterForSTA.ComponentName = "KFFitterSTA"
+replace KFTrajectoryFitterForSTA.Propagator = "SteppingHelixPropagatorAny"
+replace KFTrajectoryFitterForSTA.Estimator  = "Chi2STA"
+
+
+es_module KFTrajectorySmootherForSTA = KFTrajectorySmoother from "TrackingTools/TrackFitters/data/KFTrajectorySmootherESProducer.cfi"
+replace KFTrajectorySmootherForSTA.ComponentName = "KFSmootherSTA"
+replace KFTrajectorySmootherForSTA.Propagator = "SteppingHelixPropagatorOpposite"
+replace KFTrajectorySmootherForSTA.Estimator  = "Chi2STA"
+
+
+es_module KFFittingSmootheForSTA = KFFittingSmoother from "TrackingTools/TrackFitters/data/KFFittingSmootherESProducer.cfi"
+
+replace KFFittingSmootheForSTA.ComponentName = "KFFitterSmootherSTA"
+replace KFFittingSmootheForSTA.Fitter = "KFFitterSTA"
+replace KFFittingSmootheForSTA.Smoother = "KFSmootherSTA"
+
+
 
 # Stand Alone Muons Producer
 include "RecoMuon/StandAloneMuonProducer/data/standAloneMuons.cfi"
