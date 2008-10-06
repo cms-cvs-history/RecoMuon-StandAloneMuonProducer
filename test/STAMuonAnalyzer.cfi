@@ -1,7 +1,0 @@
- module STAMuonAnalyzer = STAMuonAnalyzer {
-#	untracked string DataType = "RealData"
-	untracked string DataType = "SimData"
-	untracked string StandAloneTrackCollectionLabel = "standAloneMuons"
-	untracked string MuonSeedCollectionLabel = "MuonSeed"
-	untracked string rootFileName = "STAMuonAnalyzer.root"
- }
